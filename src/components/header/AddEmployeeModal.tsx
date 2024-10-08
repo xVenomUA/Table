@@ -1,4 +1,4 @@
-// /src/components/AddEmployeeModal/AddEmployeeModal.tsx
+
 import React, { useState } from "react";
 import scss from "./AddEmployeeModal.module.scss";
 import { useDispatch } from "react-redux";
