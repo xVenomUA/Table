@@ -22,7 +22,7 @@ type Employee = {
 };
 
 const Table: React.FC = () => {
-  const [activeColumn, setActiveColumn] = useState<string | null>(null);
+  const [activeColumn, setActiveColumn] = useState<keyof Employee | null>(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
   const [editData, setEditData] = useState<Employee | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,7 +31,7 @@ const Table: React.FC = () => {
   const data = useSelector(selectEmployees);
   const filter = useSelector(selectFilter);
 
-  const handleSort = (column: string) => {
+  const handleSort = (column: keyof Employee) => {
     setActiveColumn(column);
     setSortDirection((prevDirection) =>
       prevDirection === "asc" ? "desc" : "asc"
@@ -49,9 +49,13 @@ const Table: React.FC = () => {
   const sortedData = [...filteredData].sort((a: Employee, b: Employee) => {
     if (!activeColumn) return 0;
     if (sortDirection === "asc") {
-      return a[activeColumn].localeCompare(b[activeColumn]);
+      return typeof a[activeColumn] === "string"
+        ? (a[activeColumn] as string).localeCompare(b[activeColumn] as string)
+        : (a[activeColumn] as number) - (b[activeColumn] as number);
     } else {
-      return b[activeColumn].localeCompare(a[activeColumn]);
+      return typeof a[activeColumn] === "string"
+        ? (b[activeColumn] as string).localeCompare(a[activeColumn] as string)
+        : (b[activeColumn] as number) - (a[activeColumn] as number);
     }
   });
 
