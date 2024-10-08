@@ -1,0 +1,75 @@
+// /src/components/EmployeeTable/EmployeeTable.module.scss
+.employeeTableContainer {
+    padding: 16px;
+    background-color: #f9fafb;
+  }
+  
+  .tableHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  
+    h2 {
+      font-size: 24px;
+      margin: 0;
+    }
+  
+    p {
+      color: #888;
+      font-size: 14px;
+    }
+  }
+  
+  .employeeTable {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+  
+    th {
+      background-color: #f9fafb;
+      text-align: left;
+      font-weight: bold;
+    }
+  
+    tbody {
+      tr {
+        &:hover {
+          background-color: #f1f5f9;
+        }
+      }
+    }
+  }
+  
+  .free {
+    color: green;
+  }
+  
+  .busy {
+    color: red;
+  }
+  
+  .working {
+    color: orange;
+  }
+  
+  .vacation {
+    color: orange;
+  }
+  
+  .editBtn, .deleteBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+  
+    &:hover {
+      color: #3b82f6;
+    }
+  }
+  
